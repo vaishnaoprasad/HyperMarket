@@ -1,0 +1,83 @@
+<div *ngIf="isLoading" class="w-full m-10 p-10 flex items-center justify-center">
+  <mat-progress-spinner mode="indeterminate" color="primary"></mat-progress-spinner>
+</div>
+
+<div *ngIf="!isLoading" class="w-full m-10 flex items-center justify-center">
+  <form class="bg-fuchsia-100	 shadow-md rounded px-8 pt-6 pb-8 mb-4" [formGroup]="isLogin ? signInForm : signUpForm"
+    (ngSubmit)="onSubmit()">
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
+        Username
+      </label>
+      <input
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        id="username" formControlName="username" type="text" placeholder="Username">
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+        Password
+      </label>
+      <input
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        id="password" formControlName="password" type="password" placeholder="Password">
+    </div>
+
+    <div *ngIf="!isLogin" class="mb-4">
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="role">
+        Role
+      </label>
+      <div class="relative">
+        <select
+          class="block appearance-none w-full border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+          id="role" formControlName="role">
+          <option>Admin</option>
+          <option>Employee</option>
+          <option>User</option>
+        </select>
+        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+          <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="!isLogin" class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
+        Email ID
+      </label>
+      <input
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        id="email" formControlName="email" type="email" placeholder="Email ID">
+    </div>
+
+    <div *ngIf="!isLogin" class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="mobile">
+        Mobile Number
+      </label>
+      <input
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        id="mobile" formControlName="mobile" type="number" placeholder="Mobile No.">
+    </div>
+
+    <div *ngIf="isLogin" class="flex items-center justify-start">
+      <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-700 cursor-pointer">
+        Forgot Password?
+      </a>
+    </div>
+    <div class="flex items-center justify-center mt-5">
+      <button
+        class="hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        class="{{isLogin ? 'bg-green-500': 'bg-blue-500'}}"
+        type="submit">
+        {{isLogin ? 'Sign In' : 'Sign Up'}}
+      </button>
+    </div>
+    <div class="flex items-center justify-end mt-5">
+      <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-700 cursor-pointer" (click)="switchTo()">
+        {{isLogin ? 'Sign Up?' : 'Sign In?' }}
+      </a>
+    </div>
+  </form>
+</div>

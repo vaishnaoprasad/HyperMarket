@@ -1,0 +1,91 @@
+.customheader {}
+
+.brandlogo {
+    border-radius: 3px;
+    clip-path: polygon(100% 0%, 90% 50%, 100% 100%, 0% 100%, 0% 50%, 0% 0%);
+}
+
+ul {
+    margin: 0 10px;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 1rem;
+
+    li {
+        font-size: medium;
+        font-weight: 500;
+    }
+
+    li:hover {
+        cursor: pointer;
+    }
+
+    li:active {
+        color: azure;
+        transform: scale(0.97);
+    }
+}
+
+.settingbtn {
+    position: sticky;
+    left: 100dvw;
+    right: 0%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: small;
+    padding: 0 0.5rem;
+}
+
+.settingbtn:hover {
+    cursor: pointer;
+    transform: scale(0.97);
+    border: 2px solid white;
+    border-radius: 3px;
+
+    label {
+        cursor: pointer;
+    }
+}
+
+.settingoption {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+
+    img,
+    label {
+        cursor: pointer;
+        margin: 0 0.5rem;
+        display: inline;
+    }
+}
+
+.carticon {
+    position: relative;
+    top: 100%;
+    bottom: -100px;
+    left: 80dvw;
+    right: 0%;
+    margin: 1rem 0 0 0;
+    
+    .cart {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: crimson;
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+    }
+}
+
+.carticon:hover{
+    cursor: pointer;
+}
+
+.carticon:active{
+    transform: scale(0.97);
+}

@@ -1,0 +1,116 @@
+<div *ngIf="isLoading" class="w-full m-10 p-10 flex items-center justify-center">
+    <mat-progress-spinner mode="indeterminate" color="primary"></mat-progress-spinner>
+  </div>
+
+<div *ngIf="!isLoading" class="w-full p-10 flex items-center justify-center">
+
+    <form [formGroup]="productForm" (ngSubmit)="onAddProduct()">
+        <div class="flex flex-wrap -mx-3 mb-6">
+            <div class="w-full">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="name">
+                    Product Name
+                </label>
+                <input
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="name" formControlName="name" type="text" placeholder="Enter Product's Name">
+                <!-- <p class="text-red-500 text-xs italic">Please fill out this field.</p> -->
+            </div>
+        </div>
+
+        <div *ngIf="selectedFile" class="flex flex-wrap -mx-3 mb-6">
+            <div class="w-full" style="aspect-ratio: 1/1;">
+                <img class="w-full h-full" [src]="imageUrl" alt="Selected Image Preview" />
+            </div>
+        </div>
+
+        <div class="flex flex-wrap -mx-3 mb-6">
+            <div class="w-full">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="image">
+                    Product Image
+                </label>
+                <input
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="image" formControlName="image" type="file" placeholder="Upload Product's Image"
+                    (change)="onSelectProductImage($event)">
+                <!-- <p class="text-red-500 text-xs italic">Please fill out this field.</p> -->
+            </div>
+        </div>
+
+        <div class="flex flex-wrap -mx-3 mb-6">
+            <div class="w-full">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="desc">
+                    Description
+                </label>
+                <textarea rows="4"
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="desc" formControlName="desc" type="textarea"
+                    placeholder="Write Product's Description"></textarea>
+                <!-- <p class="text-red-500 text-xs italic">Please fill out this field.</p> -->
+            </div>
+        </div>
+
+        <div class="flex flex-wrap -mx-3 mb-6">
+            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="brand">
+                    Brand of Product
+                </label>
+                <div class="relative">
+                    <select
+                        class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        id="brand" formControlName="brand">
+                        <option>Lewis</option>
+                        <option>Asus</option>
+                        <option>Plywood</option>
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="type">
+                    Type of Product
+                </label>
+                <div class="relative">
+                    <select
+                        class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        id="type" formControlName="type">
+                        <option>Clothings</option>
+                        <option>Electronics</option>
+                        <option>Furniture</option>
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex flex-wrap -mx-3 mb-6">
+            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="price">
+                    Price
+                </label>
+                <input
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="price" formControlName="price" type="number" placeholder="Set Product's Price">
+                <!-- <p class="text-red-500 text-xs italic">Please fill out this field.</p> -->
+            </div>
+        </div>
+
+        <div class="flex flex-wrap -mx-3 mb-6 items-center justify-between">
+            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <button
+                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                    type="submit">
+                    Add Product
+                </button>
+            </div>
+        </div>
+    </form>
+
+</div>

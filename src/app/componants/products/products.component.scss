@@ -1,0 +1,19 @@
+.customcard{
+    margin: 1rem;
+    padding: 0.2rem;
+    font-size: small !important;
+    img{
+        aspect-ratio: 1/1;
+    }
+}
+
+.customcard:hover{
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+    opacity: 97%;
+    cursor: pointer;
+
+    img{
+        transform: scale(1.03);
+        transition: 1s ease-in-out;
+    }
+}
